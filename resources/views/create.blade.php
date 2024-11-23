@@ -17,14 +17,28 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="container mx-auto">
-            <nav class="flex item-center justify-between px-10 py-2">
+        <div class="container mx-auto px-10 py-10 space-y-4">
+            <nav class="flex item-center justify-between ">
                 <h1 class="text-lg text-orange-500 font-bold uppercase">Create</h1>
                 <a 
                 href="/"
                 class="px-4 py-2 rounded-md bg-gray-300 hover:bg-gray-500 text-white"
                 >Back to Home</a>
             </nav>
+            <div>
+                <form method="POST" action="{{route("store")}}">
+                    @csrf
+                    <div class="flex flex-col gap-4">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="" class="border px-4 py-2 rounded-md focus:border-gray-400 focus:outline-none">
+                        <label for="description">Description</label>
+                        <input type="text" name="description" id="" class="border px-4 py-2 rounded-md focus:border-gray-400 focus:outline-none">
+                        <label for="image">Select Image</label>
+                        <input type="file" name="image" id="">
+                        <input type="submit" class="bg-green-500 px-4 py-2 rounded-md text-white hover:bg-green-700 w-fit">
+                    </div>
+                </form>
+            </div>
         </div>
     </body>
 </html>
