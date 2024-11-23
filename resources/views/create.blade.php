@@ -26,15 +26,27 @@
                 >Back to Home</a>
             </nav>
             <div>
-                <form method="POST" action="{{route("store")}}">
+                <form method="POST" action="{{route("store")}}" enctype="multipart/form-data">
                     @csrf
                     <div class="flex flex-col gap-4">
                         <label for="name">Name</label>
-                        <input type="text" name="name" id="" class="border px-4 py-2 rounded-md focus:border-gray-400 focus:outline-none">
+                        <input type="text" name="name" id="" value="{{old('name')}}" class="border px-4 py-2 rounded-md focus:border-gray-400 focus:outline-none">
+                        @error('name')
+                            <p class="text-red-500">{{$message}}</p>
+                        @enderror
+
                         <label for="description">Description</label>
-                        <input type="text" name="description" id="" class="border px-4 py-2 rounded-md focus:border-gray-400 focus:outline-none">
+                        <input type="text" name="description" id="" value="{{old('description')}}" class="border px-4 py-2 rounded-md focus:border-gray-400 focus:outline-none">
+                        @error('description')
+                            <p class="text-red-500">{{$message}}</p>
+                        @enderror
+
                         <label for="image">Select Image</label>
                         <input type="file" name="image" id="">
+                        @error('image')
+                            <p class="text-red-500">{{$message}}</p>
+                        @enderror
+
                         <input type="submit" class="bg-green-500 px-4 py-2 rounded-md text-white hover:bg-green-700 w-fit">
                     </div>
                 </form>
